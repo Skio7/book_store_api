@@ -1,0 +1,35 @@
+<!-- books/templates/books/book_search.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Search</title>
+</head>
+<body>
+    <h1>Book Search</h1>
+
+    <form method="post" action="{% url 'book_search' %}">
+        {% csrf_token %}
+        <label for="search_query">Search for a book:</label>
+        <input type="text" name="search_query" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if books %}
+        <h2>Search results for "{{ search_query }}"</h2>
+        <ul>
+            {% for book in books %}
+                <li>
+                    <h3>{{ book.title }}</h3>
+                    <p>Authors: {{ book.authors }}</p>
+                    {% if book.thumbnail %}
+                        <img src="{{ book.thumbnail }}" alt="Book Thumbnail">
+                    {% endif %}
+                    <p>{{ book.description }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
