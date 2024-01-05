@@ -10,7 +10,7 @@ def book_search(request):
         max_results = 25
 
         # Make a request to the Google Books API
-        api_key = 'AIzaSyBUBwEh8IFXh26H6Naballr5wEf7ujCckg'
+        api_key = 'A7IzaSyBUBwEh8IFXh26H6Naballr5wEf7ujCckg'
         url = f'https://www.googleapis.com/books/v1/volumes?q={search_query}&maxResults={max_results}&key={api_key}'
         response = requests.get(url)
         data = response.json()
